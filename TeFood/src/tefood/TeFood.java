@@ -17,6 +17,7 @@ public class TeFood {
         // TODO code application logic here
         System.out.print("Skibidi");
         System.out.print("Kiki Skibidi");
+        System.out.print("Dan Skibidi");
     }
     
 }
