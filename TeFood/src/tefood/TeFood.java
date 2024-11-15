@@ -19,6 +19,7 @@ public class TeFood {
         System.out.print("Kiki Skibidi");
         System.out.print("Dan Skibidi");
         System.out.print("Tintin Skibidi");
+        System.out.print("Trang Skibidi");
     }
     
 }
