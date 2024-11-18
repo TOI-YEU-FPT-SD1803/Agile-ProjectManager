@@ -26,5 +26,6 @@ public class TeFood {
         System.out.println("18/11");
         System.out.println("Long 18.11");
         System.out.println("Con cho long 18/11");
+        System.out.println("Dan 18.11");
     }
 }
