@@ -22,5 +22,8 @@ public class TeFood {
         System.out.print("Trang Skibidi");
         System.out.print("Trang ok");
         System.out.print("Tintin ok");
+
+        System.out.println("18/11");
+        System.out.println("Long 18.11");
     }
 }
