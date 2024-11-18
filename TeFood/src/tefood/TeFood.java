@@ -21,6 +21,16 @@ public class TeFood {
         System.out.print("Tintin Skibidi");
         System.out.print("Trang Skibidi");
         System.out.print("Trang ok");
+        System.out.print("Tintin ok");
+        System.out.print("Tintin ko ok");
+        
+        System.out.println("18/11");
+        System.out.println("Long 18.11");
+        System.out.println("Con cho long 18/11");
+        System.out.println("Dan 18.11");
+        System.out.println("Kiki 18/11");
+        System.out.println("Khanh Minh 18/11");
+        System.out.println("Trang chet me di");
+        System.out.println("kiki ali ali");
     }
-    
 }
