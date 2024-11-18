@@ -33,5 +33,6 @@ public class TeFood {
         System.out.println("Trang chet me di");
         System.out.println("kiki ali ali");
         System.out.println("Trang chet me di")
+        System.out.println("dansama");
     }
 }
