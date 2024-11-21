@@ -38,5 +38,7 @@ public class TeFood {
         System.out.println("Long 20.11");
         System.out.println("Dan Commit 20/11");
         System.out.println("Long 21/11");
+        System.out.println("Trang commit 21/11");
+        
     }
 }
