@@ -32,11 +32,12 @@ public class TeFood {
         System.out.println("Khanh Minh 18/11");
         System.out.println("Trang chet me di");
         System.out.println("kiki ali ali");
-        System.out.println("Trang chet me di")
+        System.out.println("Trang chet me di");
         System.out.println("dansama");
 
         System.out.println("20/11 + 21/11");
         System.out.println("Long 20.11");
         System.out.println("Dan Commit 20/11");
+        System.out.println("Long 21/11");
     }
 }
