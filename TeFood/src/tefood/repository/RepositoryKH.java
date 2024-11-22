@@ -49,7 +49,7 @@ public class RepositoryKH {
     }
     
     public KhachHang details(String Ma) {
-        String sql = "SELECT * FROM KhachHang where Id = ?";
+        String sql = "SELECT * FROM KhachHang where MaKhachHang = ?";
         
         KhachHang kh = new KhachHang();
         
@@ -74,5 +74,9 @@ public class RepositoryKH {
             e.printStackTrace();
         }
         return kh;
+    }
+    
+    public static void main(String[] args) {
+        new RepositoryKH().getList();
     }
 }

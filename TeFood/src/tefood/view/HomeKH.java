@@ -7,6 +7,8 @@ package tefood.view;
 import tefood.model.KhachHang;
 import tefood.repository.RepositoryKH;
 import java.sql.*;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -22,6 +24,25 @@ public class HomeKH extends javax.swing.JFrame {
     
     public HomeKH() {
         initComponents();
+        loadData(repositoryKH.getList());
+    }
+    
+    void loadData(ArrayList<KhachHang> khList) {
+        DefaultTableModel defaultTableModel = (DefaultTableModel) tblKhachHang.getModel();
+        defaultTableModel.setRowCount(0);
+        
+        for (KhachHang kh : khList) {
+            defaultTableModel.addRow(new Object[] {
+                kh.getMaKhachHang(),
+                kh.getTaiKhoan(),
+                kh.getMatKhau(),
+                kh.getSoDienThoai(),
+                kh.getEmail(),
+                kh.getDiaChi(),
+                kh.getNgayTao(),
+                kh.getTrangThai(),
+            });
+        }
     }
 
     /**
@@ -74,27 +95,27 @@ public class HomeKH extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblKhachHang);
 
-        jLabel1.setText("Mã khách hàng");
+        jLabel1.setText("MaKhachHang");
 
-        jLabel2.setText("Tài khoản");
+        jLabel2.setText("TaiKhoan");
 
-        jLabel3.setText("Mật khẩu");
+        jLabel3.setText("MatKhau");
 
-        jLabel4.setText("Số điện thoại");
+        jLabel4.setText("SoDienThoai");
 
         jLabel5.setText("Email");
 
-        jLabel6.setText("Địa chỉ");
+        jLabel6.setText("DiaChi");
 
-        jLabel7.setText("Ngày tạo");
+        jLabel7.setText("NgayTao");
 
-        jLabel8.setText("Trạng thái");
+        jLabel8.setText("TrangThai");
 
         buttonGroup1.add(rdHoatDong);
-        rdHoatDong.setText("Hoạt động");
+        rdHoatDong.setText("HoatDong");
 
         buttonGroup1.add(rdBiKhoa);
-        rdBiKhoa.setText("Bị khóa");
+        rdBiKhoa.setText("BiKhoa");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -203,7 +224,7 @@ public class HomeKH extends javax.swing.JFrame {
         txtDiaChi.setText(String.valueOf(kh.getDiaChi()));
         txtNgayTao.setText(String.valueOf(kh.getNgayTao()));
         
-        if (kh.getTrangThai().equals("Hoạt động")) {
+        if (kh.getTrangThai().equals("HoatDong")) {
             rdHoatDong.setSelected(true);
         } else {
             rdBiKhoa.setSelected(true);
