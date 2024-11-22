@@ -29,6 +29,7 @@ public class TeFood {
         System.out.println("Dan 18.11");
         System.out.println("Kiki 18/11");
         System.out.println("Khanh Minh 18/11");
-        System.out.println("Trang chet me di")
+        System.out.println("Trang chet me di");
+        System.out.println("Trang commit ngày 22/11/2024");
     }
 }
