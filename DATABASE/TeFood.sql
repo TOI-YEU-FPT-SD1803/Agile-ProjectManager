@@ -95,7 +95,6 @@ BEGIN
 END;
 GO
 
--- Chèn dữ liệu mẫu
 EXEC InsertKhachHang 'KH001', 'alice123', 'password123', '0123456789', 'alice@gmail.com', 'Hà Nội', '2024-11-22', 'Hoạt động';
 EXEC InsertKhachHang 'KH002', 'bob234', 'password123', '0123456790', 'bob@gmail.com', 'Hồ Chí Minh', '2024-11-22', 'Hoạt động';
 EXEC InsertKhachHang 'KH003', 'carol345', 'password123', '0123456791', 'carol@gmail.com', 'Đà Nẵng', '2024-11-22', 'Bị khóa';
@@ -119,7 +118,6 @@ BEGIN
 END;
 GO
 
--- Chèn dữ liệu mẫu
 EXEC InsertSanPham 'SP001', 'Mì trộn Indomie', 15.5, 100, 'Mì trộn hương vị Indomie', 'Còn hàng';
 EXEC InsertSanPham 'SP002', 'Mì trộn tương đen', 20.0, 50, 'Mì trộn với sốt tương đen', 'Còn hàng';
 EXEC InsertSanPham 'SP003', 'Bánh mì nướng muối ớt', 12.0, 200, 'Bánh mì nướng thơm ngon, cay', 'Còn hàng';
@@ -142,7 +140,6 @@ BEGIN
 END;
 GO
 
--- Chèn dữ liệu mẫu
 EXEC InsertDonHang 'DH001', 'KH001', '2024-11-22', 150.0, 'Đã nhận hàng';
 EXEC InsertDonHang 'DH002', 'KH002', '2024-11-22', 200.0, 'Chưa nhận hàng';
 EXEC InsertDonHang 'DH003', 'KH003', '2024-11-22', 250.0, 'Đã nhận hàng';
@@ -165,7 +162,6 @@ BEGIN
 END;
 GO
 
--- Chèn dữ liệu mẫu
 EXEC InsertChiTietDonHang 'CTDH001', 'DH001', 'SP001', 10, 155.0;
 EXEC InsertChiTietDonHang 'CTDH002', 'DH002', 'SP002', 20, 400.0;
 EXEC InsertChiTietDonHang 'CTDH003', 'DH003', 'SP003', 15, 180.0;
@@ -189,7 +185,6 @@ BEGIN
 END;
 GO
 
--- Chèn dữ liệu mẫu
 EXEC InsertNhanVien 'NV001', 'Nguyễn Văn A', 'Quản lý', '0987654321', 'a@gmail.com', '2024-11-22';
 EXEC InsertNhanVien 'NV002', 'Trần Thị B', 'Nhân viên bán hàng', '0987654322', 'b@gmail.com', '2024-11-22';
 EXEC InsertNhanVien 'NV003', 'Lê Minh C', 'Nhân viên giao hàng', '0987654323', 'c@gmail.com', '2024-11-22';
@@ -211,7 +206,6 @@ BEGIN
 END;
 GO
 
--- Chèn dữ liệu mẫu
 EXEC InsertThanhToan 'TT001', 'DH001', 'Tiền mặt', 'Thành công';
 EXEC InsertThanhToan 'TT002', 'DH002', 'Chuyển khoản', 'Thành công';
 EXEC InsertThanhToan 'TT003', 'DH003', 'Thẻ tín dụng', 'Thành công';
@@ -220,7 +214,7 @@ EXEC InsertThanhToan 'TT005', 'DH005', 'Chuyển khoản', 'Thành công';
 GO
 
 
--- ĐÁNH GIÁ
+-- ĐÁNH GIÁ SẢN PHẨM
 CREATE PROCEDURE InsertDanhGiaSanPham
     @MaDanhGia NVARCHAR(100),
     @MaKhachHang NVARCHAR(100),
