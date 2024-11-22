@@ -41,41 +41,6 @@ public class TeFood {
         System.out.println("Trang commit 21/11");
         System.out.println("Ha Anh Commit 21/11");
         System.out.println("Ha Anh Commit 22/11");
-        System.out.println("Chẳng lẽ ta nên dừng lại
-Chặng đường thật nhiều chông gai
-Vội xa em lúc hiện tại
-Chắc bên anh có một ai
-Cuộc tình dở dang, anh đi vội vàng
-Đắng cay em mang, đêm về lang thang
-Càng giữ càng mất, cánh tay buông rời
-Lần nào cũng thế, xót xa ê chề
-Mất anh rồi, em sống ra sao
-Mất anh rồi, em sống thế nào
-Những yêu thương chẳng còn xuyến xao
-Nỗi đau này như ngàn vết dao
-Ai sẽ cùng em đến tương lai
-Ai sẽ cùng xây đắp hiện tại
-Yêu sâu đậm rồi cũng nhạt phai
-Xa anh rồi tim vỡ làm hai
-Cuộc tình dở dang, anh đi vội vàng
-Đắng cay em mang, đêm về lang thang
-Càng giữ càng mất, cánh tay buông rời
-Lần nào cũng thế, xót xa ê chề
-Mất anh rồi, em sống ra sao
-Mất anh rồi, em sống thế nào
-Những yêu thương chẳng còn xuyến xao
-Nỗi đau này như ngàn vết dao
-Ai sẽ cùng em đến tương lai
-Ai sẽ cùng xây đắp hiện tại
-Yêu sâu đậm rồi cũng nhạt phai
-Xa anh rồi tim vỡ làm hai
-Mất anh rồi, em sống ra sao
-Mất anh rồi, em sống thế nào
-Những yêu thương chẳng còn xuyến xao
-Nỗi đau này như ngàn vết dao
-Ai sẽ cùng em đến tương lai
-Ai sẽ cùng xây đắp hiện tại
-Yêu sâu đậm rồi cũng nhạt phai
-Xa anh rồi tim vỡ làm hai");
+        System.out.println(:"Trang ngu");
     }
 }
