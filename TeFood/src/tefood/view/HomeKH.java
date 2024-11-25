@@ -8,6 +8,8 @@ import tefood.model.KhachHang;
 import tefood.repository.RepositoryKH;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -74,6 +76,11 @@ public class HomeKH extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         rdHoatDong = new javax.swing.JRadioButton();
         rdBiKhoa = new javax.swing.JRadioButton();
+        btnAdd = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
+        btnRemove = new javax.swing.JButton();
+        btnSearchByID = new javax.swing.JButton();
+        btnSearchByTK = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -95,27 +102,62 @@ public class HomeKH extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblKhachHang);
 
-        jLabel1.setText("MaKhachHang");
+        jLabel1.setText("Mã khách hàng");
 
-        jLabel2.setText("TaiKhoan");
+        jLabel2.setText("Tài khoản");
 
-        jLabel3.setText("MatKhau");
+        jLabel3.setText("Mật khẩu");
 
-        jLabel4.setText("SoDienThoai");
+        jLabel4.setText("Số điện thoại");
 
         jLabel5.setText("Email");
 
-        jLabel6.setText("DiaChi");
+        jLabel6.setText("Địa chỉ");
 
-        jLabel7.setText("NgayTao");
+        jLabel7.setText("Ngày tạo");
 
-        jLabel8.setText("TrangThai");
+        jLabel8.setText("Trạng thái");
 
         buttonGroup1.add(rdHoatDong);
-        rdHoatDong.setText("HoatDong");
+        rdHoatDong.setText("Hoạt động");
 
         buttonGroup1.add(rdBiKhoa);
-        rdBiKhoa.setText("BiKhoa");
+        rdBiKhoa.setText("Bị khóa");
+
+        btnAdd.setText("Add");
+        btnAdd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAddMouseClicked(evt);
+            }
+        });
+
+        btnUpdate.setText("Update");
+        btnUpdate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUpdateMouseClicked(evt);
+            }
+        });
+
+        btnRemove.setText("Remove");
+        btnRemove.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRemoveMouseClicked(evt);
+            }
+        });
+
+        btnSearchByID.setText("Search by ID");
+        btnSearchByID.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSearchByIDMouseClicked(evt);
+            }
+        });
+
+        btnSearchByTK.setText("Search by TK");
+        btnSearchByTK.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSearchByTKMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -161,8 +203,18 @@ public class HomeKH extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(txtNgayTao, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 900, Short.MAX_VALUE)))
+                                    .addComponent(txtNgayTao, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnSearchByID, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnSearchByTK, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 744, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -202,7 +254,14 @@ public class HomeKH extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(rdHoatDong)
                         .addComponent(rdBiKhoa)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAdd)
+                    .addComponent(btnUpdate)
+                    .addComponent(btnRemove)
+                    .addComponent(btnSearchByID)
+                    .addComponent(btnSearchByTK))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -224,12 +283,113 @@ public class HomeKH extends javax.swing.JFrame {
         txtDiaChi.setText(String.valueOf(kh.getDiaChi()));
         txtNgayTao.setText(String.valueOf(kh.getNgayTao()));
         
-        if (kh.getTrangThai().equals("HoatDong")) {
+        if (kh.getTrangThai().equals("Hoat dong")) {
             rdHoatDong.setSelected(true);
         } else {
             rdBiKhoa.setSelected(true);
         }
     }//GEN-LAST:event_tblKhachHangMouseClicked
+
+    private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddMouseClicked
+        // TODO add your handling code here:
+        String MaKhachHang = txtMaKhachHang.getText();
+        String TaiKhoan = txtTaiKhoan.getText();
+        String MatKhau = txtMatKhau.getText();
+        String SoDienThoai = txtSoDienThoai.getText();
+        String Email = txtEmail.getText();
+        String DiaChi = txtDiaChi.getText();
+        Date NgayTao = Date.valueOf(txtNgayTao.getText());
+        String TrangThai;
+        
+        if (rdHoatDong.isSelected()) {
+            TrangThai = "Hoat dong";
+        } else {
+            TrangThai = "Bi khoa";
+        }
+        
+        KhachHang kh = new KhachHang(MaKhachHang, TaiKhoan, MatKhau, SoDienThoai, Email, DiaChi, NgayTao, TrangThai);
+        Boolean kq = repositoryKH.add(kh);
+        
+        if (kq == true) {
+            JOptionPane.showMessageDialog(this, "Them khach hang moi thanh cong!");
+            loadData(repositoryKH.getList());
+        } else {
+            JOptionPane.showMessageDialog(this, "Them khach hang moi that bai!");
+        }
+    }//GEN-LAST:event_btnAddMouseClicked
+
+    private void btnUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdateMouseClicked
+        // TODO add your handling code here:
+        String MaKhachHang = txtMaKhachHang.getText();
+        String TaiKhoan = txtTaiKhoan.getText();
+        String MatKhau = txtMatKhau.getText();
+        String SoDienThoai = txtSoDienThoai.getText();
+        String Email = txtEmail.getText();
+        String DiaChi = txtDiaChi.getText();
+        Date NgayTao = Date.valueOf(txtNgayTao.getText());
+        String TrangThai;
+        
+        if (rdHoatDong.isSelected()) {
+            TrangThai = "Hoat dong";
+        } else {
+            TrangThai = "Bi khoa";
+        }
+        
+        KhachHang kh = new KhachHang(MaKhachHang, TaiKhoan, MatKhau, SoDienThoai, Email, DiaChi, NgayTao, TrangThai);
+        Boolean kq = repositoryKH.update(kh);
+        
+        if (kq == true) {
+            JOptionPane.showMessageDialog(this, "Cap nhat thanh cong thong tin khach hang co Ma: " + MaKhachHang);
+            loadData(repositoryKH.getList());
+        } else {
+            JOptionPane.showMessageDialog(this, "Khong tim duoc khach hang nao voi Ma: " + MaKhachHang);
+        }
+    }//GEN-LAST:event_btnUpdateMouseClicked
+
+    private void btnRemoveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRemoveMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRemoveMouseClicked
+
+    private void btnSearchByIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSearchByIDMouseClicked
+        // TODO add your handling code here:
+        String search = txtMaKhachHang.getText().trim();
+        
+        KhachHang kh = repositoryKH.search(search);
+        
+        if (kh != null) {
+            txtTaiKhoan.setText(kh.getTaiKhoan());
+            txtMatKhau.setText(kh.getMatKhau());
+            txtSoDienThoai.setText(kh.getSoDienThoai());
+            txtEmail.setText(kh.getEmail());
+            txtDiaChi.setText(kh.getDiaChi());
+            txtNgayTao.setText(String.valueOf(kh.getNgayTao()));
+            if (kh.getTrangThai().equals("Hoat dong")) {
+                rdHoatDong.setSelected(true);
+            } else {
+                rdBiKhoa.setSelected(true);
+            }
+            
+            JOptionPane.showMessageDialog(this, "Tim duoc thong tin khach hang co Ma: " + search);
+            loadData(repositoryKH.getList());
+        } else {
+            JOptionPane.showMessageDialog(this, "Khong co khach hang nao co Ma: " + search);
+        }
+    }//GEN-LAST:event_btnSearchByIDMouseClicked
+
+    private void btnSearchByTKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSearchByTKMouseClicked
+        // TODO add your handling code here:
+        //GPT-4o
+        String search = txtTaiKhoan.getText(); // Lấy từ khóa từ ô nhập
+    
+        // Gọi hàm tìm kiếm danh sách khách hàng theo tên tài khoản
+        List<KhachHang> khachHangList = repositoryKH.searchByTaiKhoan(search);
+
+        if (khachHangList.isEmpty()) { // Nếu không tìm thấy kết quả
+            JOptionPane.showMessageDialog(this, "Không có khách hàng nào có tên tài khoản: " + search);
+        } else { // Nếu tìm thấy kết quả
+            loadData(repositoryKH.getList()); // Hiển thị dữ liệu lên bảng
+        }
+    }//GEN-LAST:event_btnSearchByTKMouseClicked
 
     /**
      * @param args the command line arguments
@@ -268,6 +428,11 @@ public class HomeKH extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnRemove;
+    private javax.swing.JButton btnSearchByID;
+    private javax.swing.JButton btnSearchByTK;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
