@@ -52,5 +52,7 @@ public class TeFood {
         System.out.println("Khanh Minh merge 25.11");
     
         System.out.println("Kiki merge 25/11");
+
+        System.out.println("Dan merge 25.11");
     }
 }
