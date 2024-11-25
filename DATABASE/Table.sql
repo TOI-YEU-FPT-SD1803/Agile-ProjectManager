@@ -11,7 +11,7 @@ CREATE TABLE KhachHang (
     DiaChi NVARCHAR(MAX),
     NgayTao DATE,
     TrangThai NVARCHAR(100) -- Ví dụ: 'Hoạt động', 'Bị khóa'
-);
+)
 GO
 
 --6
@@ -22,7 +22,7 @@ CREATE TABLE SanPham (
     SoLuongTon INT,
     MoTa NVARCHAR(MAX),
     TrangThai NVARCHAR(20) -- Ví dụ: 'Còn hàng', 'Hết hàng'
-);
+)
 GO
 
 --5
@@ -33,7 +33,7 @@ CREATE TABLE DonHang (
     TongTien FLOAT,
     TrangThai NVARCHAR(100), -- Đã nhận hàng, Chưa nhận hàng
     FOREIGN KEY (MaKhachHang) REFERENCES KhachHang(MaKhachHang)
-);
+)
 GO
 
 --5
@@ -45,7 +45,7 @@ CREATE TABLE ChiTietDonHang (
     ThanhTien FLOAT,
     FOREIGN KEY (MaDonHang) REFERENCES DonHang(MaDonHang),
     FOREIGN KEY (MaSanPham) REFERENCES SanPham(MaSanPham)
-);
+)
 GO
 
 --6
@@ -56,7 +56,7 @@ CREATE TABLE NhanVien (
     SoDienThoai NVARCHAR(100),
     Email NVARCHAR(100),
     NgayVaoLam DATE
-);
+)
 GO
 
 --4
@@ -66,7 +66,7 @@ CREATE TABLE ThanhToan (
     PhuongThuc NVARCHAR(100),
     TrangThai NVARCHAR(100), -- Thành công, Thất bại
     FOREIGN KEY (MaDonHang) REFERENCES DonHang(MaDonHang)
-);
+)
 GO
 
 --5
@@ -78,5 +78,5 @@ CREATE TABLE DanhGiaSanPham (
     SoSao INT, -- 1 - 5
     FOREIGN KEY (MaKhachHang) REFERENCES KhachHang(MaKhachHang),
     FOREIGN KEY (MaSanPham) REFERENCES SanPham(MaSanPham)
-);
+)
 GO
