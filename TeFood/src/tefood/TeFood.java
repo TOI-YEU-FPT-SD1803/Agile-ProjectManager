@@ -44,5 +44,6 @@ public class TeFood {
         System.out.println("Trang commit 25.11");
         System.out.println("Dan Commit 25.11");
         System.out.println("Khanh Minh commit 25.11");
+        System.out.println("Khanh Minh merge 25.11");
     }
 }
