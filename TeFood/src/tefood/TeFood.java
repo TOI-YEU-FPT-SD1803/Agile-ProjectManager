@@ -30,6 +30,8 @@ public class TeFood {
         System.out.println("Kiki 18/11");
         System.out.println("Khanh Minh 18/11");
         System.out.println("Trang chet me di");
+
+        System.out.println("Trang commit ngày 22/11/2024");
         System.out.println("kiki ali ali");
         System.out.println("Trang chet me di");
         System.out.println("dansama");
@@ -58,8 +60,11 @@ public class TeFood {
 
         System.out.println("Ha anh merge + commit 27/11");
         System.out.println("Hello hello test chơi chơi");
+        System.out.println("Khanh Minh merge + commit 27/11");
+        System.out.println("Khanh Minh merge + commit 27/11");
         System.out.println("Đan commit 27.11");
 
 
+        System.out.println("Trang commit 27.11");
     }
 }
