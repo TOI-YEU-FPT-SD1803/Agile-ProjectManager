@@ -88,17 +88,17 @@ public class RepositoryKH {
                 + "?, "
                 + "?";
         try (Connection co = dbConnection.getConnection(); 
-                PreparedStatement pr = co.prepareStatement(sql)) {
-            pr.setObject(1, kh.getMaKhachHang());
-            pr.setObject(2, kh.getTaiKhoan());
-            pr.setObject(3, kh.getMatKhau());
-            pr.setObject(4, kh.getSoDienThoai());
-            pr.setObject(5, kh.getEmail());
-            pr.setObject(6, kh.getDiaChi());
-            pr.setObject(7, kh.getNgayTao());
-            pr.setObject(8, kh.getTrangThai());
+                PreparedStatement ps = co.prepareStatement(sql)) {
+            ps.setObject(1, kh.getMaKhachHang());
+            ps.setObject(2, kh.getTaiKhoan());
+            ps.setObject(3, kh.getMatKhau());
+            ps.setObject(4, kh.getSoDienThoai());
+            ps.setObject(5, kh.getEmail());
+            ps.setObject(6, kh.getDiaChi());
+            ps.setObject(7, kh.getNgayTao());
+            ps.setObject(8, kh.getTrangThai());
             
-            return pr.executeUpdate() > 0;
+            return ps.executeUpdate() > 0;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -116,16 +116,16 @@ public class RepositoryKH {
                 + "TrangThai = ?\n" 
                 + "WHERE MaKhachHang = ?";
         try (Connection co = dbConnection.getConnection(); 
-                PreparedStatement pr = co.prepareStatement(sql)) {
-            pr.setObject(1, kh.getTaiKhoan());
-            pr.setObject(2, kh.getMatKhau());
-            pr.setObject(3, kh.getSoDienThoai());
-            pr.setObject(4, kh.getEmail());
-            pr.setObject(5, kh.getDiaChi());
-            pr.setObject(6, kh.getTrangThai());
-            pr.setObject(7, kh.getMaKhachHang());
+                PreparedStatement ps = co.prepareStatement(sql)) {
+            ps.setObject(1, kh.getTaiKhoan());
+            ps.setObject(2, kh.getMatKhau());
+            ps.setObject(3, kh.getSoDienThoai());
+            ps.setObject(4, kh.getEmail());
+            ps.setObject(5, kh.getDiaChi());
+            ps.setObject(6, kh.getTrangThai());
+            ps.setObject(7, kh.getMaKhachHang());
             
-            return pr.executeUpdate() > 0;
+            return ps.executeUpdate() > 0;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -136,10 +136,10 @@ public class RepositoryKH {
         String sql = "SELECT * FROM KhachHang "
                 + "WHERE MaKhachHang = ?";
         try (Connection co = dbConnection.getConnection(); 
-                PreparedStatement pr = co.prepareStatement(sql)) {
-            pr.setObject(1, MaKhachHang);
+                PreparedStatement ps = co.prepareStatement(sql)) {
+            ps.setObject(1, MaKhachHang);
             
-            ResultSet rs = pr.executeQuery();
+            ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 KhachHang kh = new KhachHang();
                 kh.setMaKhachHang(rs.getString("MaKhachHang"));
@@ -163,11 +163,11 @@ public class RepositoryKH {
         String sql = "SELECT * FROM KhachHang WHERE TaiKhoan LIKE ?";
         List<KhachHang> selectedList = new ArrayList<>();
         try (Connection co = dbConnection.getConnection();
-             PreparedStatement pr = co.prepareStatement(sql)) {
+             PreparedStatement ps = co.prepareStatement(sql)) {
 
-            pr.setString(1, "%" + TaiKhoan + "%"); // Tìm kiếm gần đúng với từ khóa
+            ps.setString(1, "%" + TaiKhoan + "%"); // Tìm kiếm gần đúng với từ khóa
 
-            ResultSet rs = pr.executeQuery();
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 KhachHang kh = new KhachHang();
                 kh.setMaKhachHang(rs.getString("MaKhachHang"));
