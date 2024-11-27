@@ -132,6 +132,20 @@ public class RepositoryKH {
         }
     }
     
+    public Boolean remove(String MaKhachHang) {
+        String sql = "DELETE FROM KhachHang WHERE MaKhachHang = ?";
+        
+        try (Connection conn = dbConnection.getConnection();
+                PreparedStatement ps = conn.prepareStatement(sql)){
+            ps.setObject(1, MaKhachHang);
+            
+            return ps.executeUpdate() > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
     public KhachHang search(String MaKhachHang) {
         String sql = "SELECT * FROM KhachHang "
                 + "WHERE MaKhachHang = ?";

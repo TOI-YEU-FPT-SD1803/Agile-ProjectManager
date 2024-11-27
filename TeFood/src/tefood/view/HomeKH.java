@@ -348,6 +348,15 @@ public class HomeKH extends javax.swing.JFrame {
 
     private void btnRemoveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRemoveMouseClicked
         // TODO add your handling code here:
+        String MaKhachHang = txtMaKhachHang.getText();
+        Boolean kq = repositoryKH.remove(MaKhachHang);
+        
+        if (kq == true) {
+            JOptionPane.showMessageDialog(this, "Xoa thanh cong khach hang co Ma: " + MaKhachHang);
+            loadData(repositoryKH.getList());
+        } else {
+            JOptionPane.showMessageDialog(this, "Khong tim duoc khach hang co Ma: " + MaKhachHang);
+        }
     }//GEN-LAST:event_btnRemoveMouseClicked
 
     private void btnSearchByIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSearchByIDMouseClicked
