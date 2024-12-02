@@ -67,6 +67,8 @@ public class TeFood {
         
         System.out.println("Khanh Minh merge + commit 29/11");
         System.out.println("Ha Anh merge + commit 29/11");
+
+        System.out.println("Ha Anh merge + commit 2/12");
         System.out.println("Dan merge + commit 29/11");
         System.out.println("Dan merge + commit 29/11 2");
         System.out.println("Trang commit + merge 29.11");
@@ -75,5 +77,6 @@ public class TeFood {
         System.out.println("Khanh Minh merge + commit 2/12");
         System.out.println("Hihi"); 
         System.out.println("Trang commit + merge 2.12");
+        System.out.println("Dan merge + commit 2/12");
     }
 }
