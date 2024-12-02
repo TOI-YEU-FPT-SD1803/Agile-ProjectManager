@@ -74,5 +74,6 @@ public class TeFood {
         
         System.out.println("Khanh Minh merge + commit 2/12");
         System.out.println("Trang commit + merge 2.12");
+        System.out.println("Hihi");
     }
 }
