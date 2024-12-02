@@ -71,5 +71,7 @@ public class TeFood {
         System.out.println("Dan merge + commit 29/11 2");
         System.out.println("Trang commit + merge 29.11");
         System.out.println("Trang merge 29.11");
+
+        System.out.println("Trang commit + merge 2.12");
     }
 }
