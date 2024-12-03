@@ -1,0 +1,3 @@
+USE TeFood
+GO
+SELECT * FROM SanPham WHERE GiaBan BETWEEN 10 and 20
