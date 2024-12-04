@@ -30,11 +30,11 @@ public class HomeKH extends javax.swing.JFrame {
     }
     
     void loadData(ArrayList<KhachHang> khList) {
-        DefaultTableModel defaultTableModel = (DefaultTableModel) tblKhachHang.getModel();
-        defaultTableModel.setRowCount(0);
+        DefaultTableModel tableModel = (DefaultTableModel) tblKhachHang.getModel();
+        tableModel.setRowCount(0);
         
         for (KhachHang kh : khList) {
-            defaultTableModel.addRow(new Object[] {
+            tableModel.addRow(new Object[] {
                 kh.getMaKhachHang(),
                 kh.getTaiKhoan(),
                 kh.getMatKhau(),
@@ -275,6 +275,7 @@ public class HomeKH extends javax.swing.JFrame {
         
         String Ma = (String) tblKhachHang.getValueAt(row, 0);
         KhachHang kh = repositoryKH.details(Ma);
+        
         txtMaKhachHang.setText(String.valueOf(kh.getMaKhachHang()));
         txtTaiKhoan.setText(String.valueOf(kh.getTaiKhoan()));
         txtMatKhau.setText(String.valueOf(kh.getMatKhau()));
@@ -292,13 +293,13 @@ public class HomeKH extends javax.swing.JFrame {
 
     private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddMouseClicked
         // TODO add your handling code here:
-        String MaKhachHang = txtMaKhachHang.getText();
-        String TaiKhoan = txtTaiKhoan.getText();
-        String MatKhau = txtMatKhau.getText();
-        String SoDienThoai = txtSoDienThoai.getText();
-        String Email = txtEmail.getText();
-        String DiaChi = txtDiaChi.getText();
-        Date NgayTao = Date.valueOf(txtNgayTao.getText());
+        String MaKhachHang = txtMaKhachHang.getText().trim();
+        String TaiKhoan = txtTaiKhoan.getText().trim();
+        String MatKhau = txtMatKhau.getText().trim();
+        String SoDienThoai = txtSoDienThoai.getText().trim();
+        String Email = txtEmail.getText().trim();
+        String DiaChi = txtDiaChi.getText().trim();
+        Date NgayTao = Date.valueOf(txtNgayTao.getText().trim());
         String TrangThai;
         
         if (rdHoatDong.isSelected()) {
@@ -320,13 +321,13 @@ public class HomeKH extends javax.swing.JFrame {
 
     private void btnUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdateMouseClicked
         // TODO add your handling code here:
-        String MaKhachHang = txtMaKhachHang.getText();
-        String TaiKhoan = txtTaiKhoan.getText();
-        String MatKhau = txtMatKhau.getText();
-        String SoDienThoai = txtSoDienThoai.getText();
-        String Email = txtEmail.getText();
-        String DiaChi = txtDiaChi.getText();
-        Date NgayTao = Date.valueOf(txtNgayTao.getText());
+        String MaKhachHang = txtMaKhachHang.getText().trim();
+        String TaiKhoan = txtTaiKhoan.getText().trim();
+        String MatKhau = txtMatKhau.getText().trim();
+        String SoDienThoai = txtSoDienThoai.getText().trim();
+        String Email = txtEmail.getText().trim();
+        String DiaChi = txtDiaChi.getText().trim();
+        Date NgayTao = Date.valueOf(txtNgayTao.getText().trim());
         String TrangThai;
         
         if (rdHoatDong.isSelected()) {
@@ -348,7 +349,7 @@ public class HomeKH extends javax.swing.JFrame {
 
     private void btnRemoveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRemoveMouseClicked
         // TODO add your handling code here:
-        String MaKhachHang = txtMaKhachHang.getText();
+        String MaKhachHang = txtMaKhachHang.getText().trim();
         Boolean kq = repositoryKH.remove(MaKhachHang);
         
         if (kq == true) {
@@ -388,7 +389,7 @@ public class HomeKH extends javax.swing.JFrame {
     private void btnSearchByTKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSearchByTKMouseClicked
         // TODO add your handling code here:
         //GPT-4o
-        String search = txtTaiKhoan.getText(); // Lấy từ khóa từ ô nhập
+        String search = txtTaiKhoan.getText().trim(); // Lấy từ khóa từ ô nhập
     
         // Gọi hàm tìm kiếm danh sách khách hàng theo tên tài khoản
         List<KhachHang> khachHangList = repositoryKH.searchByTaiKhoan(search);
