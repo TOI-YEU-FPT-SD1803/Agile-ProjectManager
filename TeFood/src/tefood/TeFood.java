@@ -83,5 +83,6 @@ public class TeFood {
         System.out.println("Dan merge + commit 4/12");
 
         System.out.println("Trang commit lan gan cuoi 0812");
+        System.out.println("Vay la lan cuoi di ben nhau, km 8.12");
     }
 }
