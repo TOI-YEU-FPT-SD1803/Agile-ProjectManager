@@ -88,5 +88,7 @@ public class TeFood {
         System.out.println("Cay dang nhung khong dau 8.12");
         
         System.out.println("Trang commit lan  cuoi 0912");
+
+        System.out.println("tam biet agile 9.12");
     }
 }
