@@ -14,13 +14,13 @@ public class DonHang {
     public String MaDonHang;
     public String MaKhachHang;
     public Date NgayDatHang;
-    public double TongTien;
+    public Double TongTien;
     public String TrangThai;
 
     public DonHang() {
     }
 
-    public DonHang(String MaDonHang, String MaKhachHang, Date NgayDatHang, double TongTien, String TrangThai) {
+    public DonHang(String MaDonHang, String MaKhachHang, Date NgayDatHang, Double TongTien, String TrangThai) {
         this.MaDonHang = MaDonHang;
         this.MaKhachHang = MaKhachHang;
         this.NgayDatHang = NgayDatHang;
@@ -52,11 +52,11 @@ public class DonHang {
         this.NgayDatHang = NgayDatHang;
     }
 
-    public double getTongTien() {
+    public Double getTongTien() {
         return TongTien;
     }
 
-    public void setTongTien(double TongTien) {
+    public void setTongTien(Double TongTien) {
         this.TongTien = TongTien;
     }
 
@@ -67,4 +67,6 @@ public class DonHang {
     public void setTrangThai(String TrangThai) {
         this.TrangThai = TrangThai;
     }
+
+    
 }

@@ -4,17 +4,42 @@
  */
 package tefood.view;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import tefood.model.DonHang;
+import tefood.repository.RepositoryDH;
+import java.sql.*;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author longg
  */
-public class HomeHD extends javax.swing.JFrame {
+public class HomeDH extends javax.swing.JFrame {
 
     /**
      * Creates new form HomeHD
      */
-    public HomeHD() {
+    RepositoryDH repositoryDH = new RepositoryDH();
+    
+    public HomeDH() {
         initComponents();
+        loadData(repositoryDH.getList());
+    }
+    
+    void loadData(ArrayList<DonHang> dhList) {
+        DefaultTableModel tableModel = (DefaultTableModel) tblDonHang.getModel();
+        tableModel.setRowCount(0);
+        
+        for (DonHang dh : dhList) {
+            tableModel.addRow(new Object[] {
+                dh.getMaDonHang(),
+                dh.getMaKhachHang(),
+                dh.getNgayDatHang(),
+                dh.getTongTien(),
+                dh.getTrangThai(),
+            });
+        }
     }
 
     /**
@@ -26,21 +51,299 @@ public class HomeHD extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        jLabel3 = new javax.swing.JLabel();
+        rdDaNhanHang = new javax.swing.JRadioButton();
+        txtNgayDatHang = new javax.swing.JTextField();
+        rdChuaNhanHang = new javax.swing.JRadioButton();
+        txtTongTien = new javax.swing.JTextField();
+        btnAdd = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        btnUpdate = new javax.swing.JButton();
+        btnRemove = new javax.swing.JButton();
+        btnSearchDate = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblDonHang = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        txtMaDH = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtMaKH = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        btnSearchTotal = new javax.swing.JButton();
+        txtMin = new javax.swing.JTextField();
+        txtMax = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel3.setText("Ngày đặt hàng");
+
+        buttonGroup1.add(rdDaNhanHang);
+        rdDaNhanHang.setText("Đã nhận hàng");
+
+        buttonGroup1.add(rdChuaNhanHang);
+        rdChuaNhanHang.setText("Chưa nhận hàng");
+
+        btnAdd.setText("Add");
+        btnAdd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAddMouseClicked(evt);
+            }
+        });
+
+        jLabel4.setText("Tổng tiền");
+
+        btnUpdate.setText("Update");
+        btnUpdate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUpdateMouseClicked(evt);
+            }
+        });
+
+        btnRemove.setText("Remove");
+        btnRemove.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRemoveMouseClicked(evt);
+            }
+        });
+
+        btnSearchDate.setText("SearchDate");
+        btnSearchDate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSearchDateMouseClicked(evt);
+            }
+        });
+
+        tblDonHang.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "MaDonHang", "MaKhachHang", "NgayDatHang", "TongTien", "TrangThai"
+            }
+        ));
+        tblDonHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDonHangMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblDonHang);
+
+        jLabel1.setText("Mã đơn hàng");
+
+        jLabel2.setText("Mã khách hàng");
+
+        jLabel8.setText("Trạng thái");
+
+        btnSearchTotal.setText("SearchTotal");
+        btnSearchTotal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSearchTotalMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1280, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1268, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtMaDH, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtMaKH, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtNgayDatHang, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnSearchDate, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(rdDaNhanHang, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(50, 50, 50)
+                                .addComponent(rdChuaNhanHang, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(464, 464, 464)
+                .addComponent(btnSearchTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtMax, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(txtMin))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtMaDH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtMaKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtNgayDatHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(rdDaNhanHang)
+                        .addComponent(rdChuaNhanHang)))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnSearchTotal)
+                    .addComponent(txtMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAdd)
+                    .addComponent(btnUpdate)
+                    .addComponent(btnRemove)
+                    .addComponent(btnSearchDate))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddMouseClicked
+        // TODO add your handling code here:
+        String maDH = txtMaDH.getText().trim();
+        String maKH = txtMaKH.getText().trim();
+        Date ngayDatHang = Date.valueOf(txtNgayDatHang.getText().trim());
+        Double tongTien = Double.valueOf(txtTongTien.getText().trim());
+        String trangThai;
+        if (rdDaNhanHang.isSelected()) {
+            trangThai = "Da nhan hang";
+        } else {
+            trangThai = "Chua nhan hang";
+        }
+        
+        DonHang dh = new DonHang(maDH, maKH, ngayDatHang, tongTien, trangThai);
+        
+        Boolean kq = repositoryDH.add(dh);
+        if (kq == true) {
+            JOptionPane.showMessageDialog(this, "Them thanh cong!");
+            loadData(repositoryDH.getList());
+        } else {
+            JOptionPane.showMessageDialog(this, "Them that bai!");            
+        }
+    }//GEN-LAST:event_btnAddMouseClicked
+
+    private void btnUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdateMouseClicked
+        // TODO add your handling code here:
+        String maDH = txtMaDH.getText().trim();
+        String maKH = txtMaKH.getText().trim();
+        Date ngayDatHang = Date.valueOf(txtNgayDatHang.getText().trim());
+        Double tongTien = Double.valueOf(txtTongTien.getText().trim());
+        String trangThai;
+        if (rdDaNhanHang.isSelected()) {
+            trangThai = "Da nhan hang";
+        } else {
+            trangThai = "Chua nhan hang";
+        }
+        
+        DonHang dh = new DonHang(maDH, maKH, ngayDatHang, tongTien, trangThai);
+        
+        Boolean kq = repositoryDH.update(dh);
+        if (kq == true) {
+            JOptionPane.showMessageDialog(this, "Cap nhat thanh cong!");
+            loadData(repositoryDH.getList());
+        } else {
+            JOptionPane.showMessageDialog(this, "Cat nhat that bai!");            
+        }
+    }//GEN-LAST:event_btnUpdateMouseClicked
+
+    private void btnRemoveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRemoveMouseClicked
+        // TODO add your handling code here:
+        String maDH = txtMaDH.getText().trim();
+        
+        Boolean kq = repositoryDH.remove(maDH);
+        if (kq == true) {
+            JOptionPane.showMessageDialog(this, "Xoa thanh cong!");
+            loadData(repositoryDH.getList());
+        } else {
+            JOptionPane.showMessageDialog(this, "Xoa that bai!");            
+        }
+    }//GEN-LAST:event_btnRemoveMouseClicked
+
+    private void tblDonHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDonHangMouseClicked
+        // TODO add your handling code here:
+        int row = tblDonHang.getSelectedRow();
+        String ma = (String) tblDonHang.getValueAt(row, 0);
+        DonHang dh = repositoryDH.details(ma);
+        
+        txtMaDH.setText(String.valueOf(dh.getMaDonHang()));
+        txtMaKH.setText(String.valueOf(dh.getMaKhachHang()));
+        txtNgayDatHang.setText(String.valueOf(dh.getNgayDatHang()));
+        txtTongTien.setText(String.valueOf(dh.getTongTien()));
+        if (dh.getTrangThai().equals("Da nhan hang")) {
+            rdDaNhanHang.setSelected(true);
+        } else {
+            rdChuaNhanHang.setSelected(true);
+        }
+    }//GEN-LAST:event_tblDonHangMouseClicked
+
+    private void btnSearchDateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSearchDateMouseClicked
+        // TODO add your handling code here:
+        String ngay = String.valueOf(txtNgayDatHang.getText().trim());
+        
+        ArrayList<DonHang> kq = repositoryDH.searchDate(ngay);
+        if (kq.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Khong tim duoc don hang nao trong ngay:" + ngay);
+        } else {
+            JOptionPane.showMessageDialog(this, "Tim duoc cac don hang trong ngay:" + ngay);    
+            loadData(repositoryDH.searchDate(ngay));        
+        }
+    }//GEN-LAST:event_btnSearchDateMouseClicked
+
+    private void btnSearchTotalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSearchTotalMouseClicked
+        // TODO add your handling code here:
+        Double min = Double.valueOf(txtMin.getText().trim());
+        Double max = Double.valueOf(txtMax.getText().trim());
+        
+        ArrayList<DonHang> kq = repositoryDH.searchTotal(min, max);
+        if (kq.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Khong tim duoc don hang trong khoang tu " + min + " den " + max);
+        } else {
+            JOptionPane.showMessageDialog(this, "Tim duoc don hang trong khoang tu " + min + " den " + max);    
+            loadData(repositoryDH.searchTotal(min, max));        
+        }
+    }//GEN-LAST:event_btnSearchTotalMouseClicked
 
     /**
      * @param args the command line arguments
@@ -59,24 +362,46 @@ public class HomeHD extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HomeHD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeDH.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HomeHD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeDH.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HomeHD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeDH.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HomeHD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeDH.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HomeHD().setVisible(true);
+                new HomeDH().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnRemove;
+    private javax.swing.JButton btnSearchDate;
+    private javax.swing.JButton btnSearchTotal;
+    private javax.swing.JButton btnUpdate;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JRadioButton rdChuaNhanHang;
+    private javax.swing.JRadioButton rdDaNhanHang;
+    private javax.swing.JTable tblDonHang;
+    private javax.swing.JTextField txtMaDH;
+    private javax.swing.JTextField txtMaKH;
+    private javax.swing.JTextField txtMax;
+    private javax.swing.JTextField txtMin;
+    private javax.swing.JTextField txtNgayDatHang;
+    private javax.swing.JTextField txtTongTien;
     // End of variables declaration//GEN-END:variables
 }
