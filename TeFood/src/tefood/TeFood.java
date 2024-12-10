@@ -78,9 +78,20 @@ public class TeFood {
         System.out.println("Hihi"); 
         System.out.println("Trang commit + merge 2.12");
         System.out.println("Dan merge + commit 2/12");
-
         System.out.println("Trang Pham commit va merge 0412");
+        System.out.println("Ha Anh merge + commit 4/12");
+        System.out.println("kIKI COMMIT");
+
+        System.out.println("Ha Anh merge + commit 8/12");
         System.out.println("Dan merge + commit 4/12");
 
+        System.out.println("Trang commit lan gan cuoi 0812");
+        System.out.println("Vay la lan cuoi di ben nhau, km 8.12");
+        System.out.println("Dan commit 8/12");
+        System.out.println("Cay dang nhung khong dau 8.12");
+        
+        System.out.println("Trang commit lan  cuoi 0912");
+
+        System.out.println("tam biet agile 9.12");
     }
 }
